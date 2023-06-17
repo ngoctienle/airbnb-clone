@@ -18,7 +18,7 @@ const Button: FC<IButtonProps> = ({ label, onClick, disabled, outline, small, ic
       onClick={onClick}
       disabled={disabled}
       className={`relative w-full rounded-lg transition hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-70 
-        ${outline ? 'border-black bg-white text-white' : 'border-rose-500 bg-rose-500 text-white'}
+        ${outline ? 'border-black bg-white text-black' : 'border-rose-500 bg-rose-500 text-white'}
         ${small ? 'border-[1px] py-1 text-sm font-light' : 'text-md border-2 py-3 font-semibold'}
       `}
     >
