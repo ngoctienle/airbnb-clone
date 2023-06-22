@@ -1,7 +1,9 @@
 'use client'
 
 import axios from 'axios'
-import { FC, useCallback, useState } from 'react'
+import { signIn } from 'next-auth/react'
+import { toast } from 'react-hot-toast'
+import { useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { AiFillGithub } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc'
@@ -10,12 +12,9 @@ import useRegisterModal from '@/app/hooks/useRegisterModal'
 import Modal from './Modal'
 import Heading from '../Heading'
 import Input from '../Input/Input'
-import { toast } from 'react-hot-toast'
 import Button from '../Button'
 
-interface IRegisterModalProps {}
-
-const RegisterModal: FC<IRegisterModalProps> = ({}) => {
+const RegisterModal = () => {
   const registerModal = useRegisterModal()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -79,8 +78,18 @@ const RegisterModal: FC<IRegisterModalProps> = ({}) => {
   const footerContent = (
     <div className='mt-3 flex flex-col gap-4'>
       <hr />
-      <Button outline label='Continue with Google' icon={FcGoogle} onClick={() => {}} />
-      <Button outline label='Continue with Github' icon={AiFillGithub} onClick={() => {}} />
+      <Button
+        outline
+        label='Continue with Google'
+        icon={FcGoogle}
+        onClick={() => signIn('google')}
+      />
+      <Button
+        outline
+        label='Continue with Github'
+        icon={AiFillGithub}
+        onClick={() => signIn('github')}
+      />
       <div className='mt-4 flex flex-row items-center justify-center gap-2 text-center font-light text-neutral-500'>
         <div>Already have an account?</div>
         <div
